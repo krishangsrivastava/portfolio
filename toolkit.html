@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#070a0f">
+  <title>Engineering Toolkit | Krishang Srivastava</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        screens: {
+          'xs': '420px',
+          'sm': '640px',
+          'md': '768px',
+          'lg': '1024px',
+          'xl': '1280px'
+        },
+        extend: {
+          fontFamily: {
+            sans: ['"Inter"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+            racing: ['"Chakra Petch"', 'sans-serif']
+          },
+          colors: {
+            brand: {
+              black: '#070a0f',
+              dark: '#0d111a',
+              card: '#121722',
+              cardHover: '#182030',
+              border: '#1e2738',
+              borderLight: '#2c3950',
+              accent: '#e11d48',
+              accentHover: '#be123c',
+              gold: '#f59e0b',
+              blue: '#38bdf8',
+              emerald: '#10b981',
+              slate: '#94a3b8'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #070a0f; }
+    ::-webkit-scrollbar-thumb { background: #1e2738; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #e11d48; }
+    .blueprint-grid {
+      background-color: #070a0f;
+      background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+  </style>
+</head>
+<body class="blueprint-grid text-slate-200 font-sans min-h-screen selection:bg-rose-600 selection:text-white flex flex-col justify-between">
+  <div id="toast" class="fixed top-5 right-4 sm:top-20 sm:right-6 z-50 transform -translate-y-24 opacity-0 pointer-events-none transition-all duration-300 flex items-center space-x-3 bg-brand-card border border-brand-borderLight text-white px-4 py-3 rounded-xl shadow-2xl max-w-[90vw] sm:max-w-md">
+    <div class="w-8 h-8 rounded-lg bg-brand-accent/20 text-brand-accent flex items-center justify-center shrink-0">
+      <i class="fa-solid fa-check text-sm"></i>
+    </div>
+    <div class="min-w-0">
+      <p class="text-xs font-semibold text-white">System Notification</p>
+      <p id="toast-message" class="text-xs font-mono text-slate-300 truncate">Action completed</p>
+    </div>
+  </div>
+
+  <header class="sticky top-0 z-40 w-full bg-[#070a0f]/95 backdrop-blur-md border-b border-brand-border px-3 sm:px-6 lg:px-8 py-2.5 sm:py-3">
+    <div class="max-w-6xl mx-auto flex items-center justify-between gap-2 sm:gap-4">
+      <a href="index.html" class="flex items-center space-x-2 sm:space-x-3 group min-w-0 flex-shrink">
+        <div class="flex items-center space-x-1 sm:space-x-1.5 shrink-0">
+          <span class="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-brand-accent inline-block"></span>
+          <span class="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-brand-gold inline-block"></span>
+          <span class="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-brand-blue inline-block"></span>
+        </div>
+        <div class="h-4 w-px bg-brand-border hidden sm:block"></div>
+        <span class="font-racing font-bold text-xs sm:text-sm tracking-wider text-white group-hover:text-brand-accent transition truncate">
+          KRISHANG SRIVASTAVA
+        </span>
+      </a>
+
+      <nav class="hidden md:flex items-center space-x-1 text-xs font-mono font-medium">
+        <a href="index.html" class="px-3 py-1.5 rounded-md text-slate-300 hover:text-white hover:bg-brand-card transition">About</a>
+        <a href="toolkit.html" class="px-3 py-1.5 rounded-md text-brand-accent bg-brand-card font-semibold transition">Engineering Toolkit</a>
+        <a href="projects.html" class="px-3 py-1.5 rounded-md text-slate-300 hover:text-white hover:bg-brand-card transition">Engineering Projects</a>
+        <a href="experience.html" class="px-3 py-1.5 rounded-md text-slate-300 hover:text-white hover:bg-brand-card transition">Experience & Education</a>
+        <a href="contact.html" class="px-3 py-1.5 rounded-md text-slate-300 hover:text-white hover:bg-brand-card transition">Contact</a>
+      </nav>
+
+      <div class="flex items-center space-x-1.5 sm:space-x-3 shrink-0">
+        <a href="https://github.com/krishangsrivastava" target="_blank" rel="noopener noreferrer" title="GitHub Profile" class="hidden sm:inline-flex text-slate-400 hover:text-white transition p-1.5">
+          <i class="fa-brands fa-github text-base"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/krishang-srivastava18" target="_blank" rel="noopener noreferrer" title="LinkedIn Profile" class="hidden sm:inline-flex text-slate-400 hover:text-brand-blue transition p-1.5">
+          <i class="fa-brands fa-linkedin text-base"></i>
+        </a>
+        <div class="h-4 w-px bg-brand-border hidden sm:block"></div>
+        <button onclick="requestCVViaEmail()" class="bg-brand-accent hover:bg-brand-accentHover text-white px-2.5 sm:px-3.5 py-1.5 rounded-lg text-xs font-medium flex items-center space-x-1.5 transition shadow-sm">
+          <i class="fa-regular fa-file-lines text-xs"></i>
+          <span class="hidden xs:inline">Request CV</span>
+          <span class="xs:hidden">CV</span>
+        </button>
+        <button onclick="toggleMobileMenu()" aria-label="Toggle navigation" class="md:hidden w-8 h-8 rounded-lg bg-brand-card border border-brand-border text-slate-300 hover:text-white flex items-center justify-center transition">
+          <i id="menu-icon" class="fa-solid fa-bars text-sm"></i>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobile-menu" class="hidden md:hidden border-t border-brand-border mt-2.5 pt-3 pb-3 space-y-2 font-mono text-xs">
+      <div class="space-y-1">
+        <a href="index.html" class="block px-3.5 py-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-brand-card">About</a>
+        <a href="toolkit.html" class="block px-3.5 py-2.5 rounded-lg text-brand-accent bg-brand-card font-semibold">Engineering Toolkit</a>
+        <a href="projects.html" class="block px-3.5 py-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-brand-card">Engineering Projects</a>
+        <a href="experience.html" class="block px-3.5 py-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-brand-card">Experience & Education</a>
+        <a href="contact.html" class="block px-3.5 py-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-brand-card">Contact</a>
+      </div>
+      <div class="pt-2.5 border-t border-brand-border/70 flex items-center justify-between px-2 text-slate-400">
+        <span class="text-[11px]">Connect:</span>
+        <div class="flex items-center space-x-4">
+          <a href="https://github.com/krishangsrivastava" target="_blank" rel="noopener noreferrer" class="hover:text-white transition flex items-center space-x-1.5">
+            <i class="fa-brands fa-github text-sm"></i>
+            <span>GitHub</span>
+          </a>
+          <a href="https://www.linkedin.com/in/krishang-srivastava18" target="_blank" rel="noopener noreferrer" class="hover:text-brand-blue transition flex items-center space-x-1.5">
+            <i class="fa-brands fa-linkedin text-sm"></i>
+            <span>LinkedIn</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="w-full max-w-6xl mx-auto px-4 sm:px-8 py-6 sm:py-12 space-y-8 sm:space-y-10 flex-1">
+    <section class="border-b border-brand-border pb-6 space-y-2">
+      <span class="text-xs font-mono text-brand-accent font-semibold uppercase tracking-wider block">
+        Technical Capabilities & Tools
+      </span>
+      <h1 class="text-2xl xs:text-3xl sm:text-5xl font-racing font-bold text-white tracking-wide uppercase">
+        Engineering Toolkit
+      </h1>
+      <p class="text-xs sm:text-base text-slate-300 font-sans max-w-3xl leading-relaxed">
+        Domain methodologies, calculation workflows, simulation packages and race telemetry software used across Formula Student development, physical testing and computational modeling.
+      </p>
+    </section>
+
+    <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+      <article class="bg-brand-card border border-brand-border p-5 sm:p-6 rounded-2xl space-y-4 flex flex-col justify-between">
+        <div class="space-y-4">
+          <div class="flex flex-wrap items-center justify-between gap-2 border-b border-brand-border pb-3">
+            <h2 class="font-racing font-bold text-white text-base sm:text-lg tracking-wide flex items-center space-x-2">
+              <i class="fa-solid fa-circle-stop text-brand-accent text-sm"></i>
+              <span>Braking Systems</span>
+            </h2>
+            <span class="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/30">
+              Practical Experience
+            </span>
+          </div>
+          <ul class="text-xs text-slate-300 space-y-2.5 font-mono">
+            <li class="flex items-center space-x-2">
+              <span class="w-1.5 h-1.5 bg-brand-accent rounded-full shrink-0"></span>
+              <span>Brake-System Design</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <span class="w-1.5 h-1.5 bg-brand-accent rounded-full shrink-0"></span>
+              <span>Hydraulic Calculations</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <span class="w-1.5 h-1.5 bg-brand-accent rounded-full shrink-0"></span>
+              <span>Brake Torque Analysis</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <span class="w-1.5 h-1.5 bg-brand-accent rounded-full shrink-0"></span>
+              <span>Brake Bias Adjustment</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <span class="w-1.5 h-1.5 bg-brand-accent rounded-full shrink-0"></span>
+              <span>Rotor Design</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <span class="w-1.5 h-1.5 bg-brand-accent rounded-full shrink-0"></span>
+              <span>Vehicle Testing</span>
+            </li>
+          </ul>
+        </div>
+        <p class="text-[11px] text-slate-400 font-sans border-t border-brand-border pt-3">
+          Applied directly in master cylinder sizing, pedal leverage, balance bar calibration and 4-wheel dynamic lockup testing on Formula Student cars.
+        </p>
+      </article>
+
+      <article class="bg-brand-card border border-brand-border p-5 sm:p-6 rounded-2xl space-y-4 flex flex-col justify-between">
+        <div class="space-y-4">
+          <div class="flex flex-wrap items-center justify-between gap-2 border-b border-brand-border pb-3">
+            <h2 class="font-racing font-bold text-white text-base sm:text-lg tracking-wide flex items-center space-x-2">
+              <i class="fa-solid fa-sliders text-brand-blue text-sm"></i>
+              <span>Vehicle Dynamics & Car Setup</span>
+            </h2>
+            <span class="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/30">
+              Practical Experience
+            </span>
+          </div>
+          <ul class="text-xs text-slate-300 space-y-2.5 font-mono">
+            <li class="flex items-center space-x-2">
+              <span class="w-1.5 h-1.5 bg-brand-blue rounded-full shrink-0"></span>
+              <span>Tyre Characterisation</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <span class="w-1.5 h-1.5 bg-brand-blue rounded-full shrink-0"></span>
+              <span>Vehicle Dynamics Fundamentals</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <span class="w-1.5 h-1.5 bg-brand-blue rounded-full shrink-0"></span>
+              <span>Car Setup Analysis</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <span class="w-1.5 h-1.5 bg-brand-blue rounded-full shrink-0"></span>
+              <span>Suspension and Damper Setup</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <span class="w-1.5 h-1.5 bg-brand-blue rounded-full shrink-0"></span>
+              <span>Understeer and Oversteer Investigation</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <span class="w-1.5 h-1.5 bg-brand-blue rounded-full shrink-0"></span>
+              <span>Driver Feedback Analysis</span>
+            </li>
+          </ul>
+        </div>
+        <p class="text-[11px] text-slate-400 font-sans border-t border-brand-border pt-3">
+          Analysing contact patch force generation, cornering stiffness, weight transfer gradients and handling balance across corner phases.
+        </p>
+      </article>
+
+      <article class="bg-brand-card border border-brand-border p-5 sm:p-6 rounded-2xl space-y-4 flex flex-col justify-between">
+        <div class="space-y-4">
+          <div class="flex flex-wrap items-center justify-between gap-2 border-b border-brand-border pb-3">
+            <h2 class="font-racing font-bold text-white text-base sm:text-lg tracking-wide flex items-center space-x-2">
+              <i class="fa-solid fa-satellite-dish text-brand-gold text-sm"></i>
+              <span>Telemetry & Data Analysis</span>
+            </h2>
+            <span class="text-[10px] font-mono text-brand-blue bg-sky-500/10 px-2 py-0.5 rounded border border-sky-500/30">
+              Applied & Developing
+            </span>
+          </div>
+          <ul class="text-xs text-slate-300 space-y-2.5 font-mono">
+            <li class="flex items-center space-x-2">
+              <span class="w-1.5 h-1.5 bg-brand-gold rounded-full shrink-0"></span>
+              <span>MoTeC i2</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <span class="w-1.5 h-1.5 bg-brand-gold rounded-full shrink-0"></span>
+              <span>Garage61</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <span class="w-1.5 h-1.5 bg-brand-gold rounded-full shrink-0"></span>
+              <span>Lap Comparison</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <span class="w-1.5 h-1.5 bg-brand-gold rounded-full shrink-0"></span>
+              <span>Sector-by-Sector Analysis</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <span class="w-1.5 h-1.5 bg-brand-gold rounded-full shrink-0"></span>
+              <span>MATLAB Data Analysis</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <span class="w-1.5 h-1.5 bg-brand-gold rounded-full shrink-0"></span>
+              <span>Python</span>
+            </li>
+          </ul>
+        </div>
+        <p class="text-[11px] text-slate-400 font-sans border-t border-brand-border pt-3">
+          Overlaying speed traces, throttle pickup points, braking pressure decay and steering angle to diagnose driver technique and chassis behavior.
+        </p>
+      </article>
+
+      <article class="bg-brand-card border border-brand-border p-5 sm:p-6 rounded-2xl space-y-4 flex flex-col justify-between">
+        <div class="space-y-4">
+          <div class="flex flex-wrap items-center justify-between gap-2 border-b border-brand-border pb-3">
+            <h2 class="font-racing font-bold text-white text-base sm:text-lg tracking-wide flex items-center space-x-2">
+              <i class="fa-solid fa-chart-line text-emerald-400 text-sm"></i>
+              <span>Simulation & CAD</span>
+            </h2>
+            <span class="text-[10px] font-mono text-brand-gold bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/30">
+              Modelling & Numerical
+            </span>
+          </div>
+          <div class="space-y-3">
+            <div>
+              <span class="text-[10px] font-mono uppercase text-emerald-400 font-semibold tracking-wider block mb-1.5">Simulation</span>
+              <ul class="text-xs text-slate-300 space-y-2 font-mono">
+                <li class="flex items-center space-x-2">
+                  <span class="w-1.5 h-1.5 bg-emerald-400 rounded-full shrink-0"></span>
+                  <span>MATLAB Lap-Time Simulation</span>
+                </li>
+                <li class="flex items-center space-x-2">
+                  <span class="w-1.5 h-1.5 bg-emerald-400 rounded-full shrink-0"></span>
+                  <span>Vehicle Performance Modelling</span>
+                </li>
+                <li class="flex items-center space-x-2">
+                  <span class="w-1.5 h-1.5 bg-emerald-400 rounded-full shrink-0"></span>
+                  <span>ANSYS Rotor Thermal Study</span>
+                </li>
+              </ul>
+            </div>
+            <div class="pt-2.5 border-t border-brand-border/60">
+              <span class="text-[10px] font-mono uppercase text-brand-blue font-semibold tracking-wider block mb-1.5">CAD</span>
+              <ul class="text-xs text-slate-300 space-y-2 font-mono">
+                <li class="flex items-center space-x-2">
+                  <span class="w-1.5 h-1.5 bg-brand-blue rounded-full shrink-0"></span>
+                  <span>SolidWorks</span>
+                </li>
+                <li class="flex items-center space-x-2">
+                  <span class="w-1.5 h-1.5 bg-brand-blue rounded-full shrink-0"></span>
+                  <span>F1 Style Front Wing Design</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <p class="text-[11px] text-slate-400 font-sans border-t border-brand-border pt-3">
+          Lap time numerical algorithms, ANSYS brake rotor thermal validation, 3D component packaging and Formula 1 front wing aerodynamic design.
+        </p>
+      </article>
+
+      <article class="bg-brand-card border border-brand-border p-5 sm:p-6 rounded-2xl space-y-4 flex flex-col justify-between md:col-span-2 lg:col-span-2">
+        <div class="space-y-4">
+          <div class="flex flex-wrap items-center justify-between gap-2 border-b border-brand-border pb-3">
+            <h2 class="font-racing font-bold text-white text-base sm:text-lg tracking-wide flex items-center space-x-2">
+              <i class="fa-solid fa-microchip text-rose-400 text-sm"></i>
+              <span>Embedded Systems & Data Acquisition</span>
+            </h2>
+            <span class="text-[10px] font-mono text-slate-400 bg-slate-500/10 px-2 py-0.5 rounded border border-slate-500/30">
+              Hardware Prototyping
+            </span>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 text-xs font-mono text-slate-300">
+            <div class="p-3.5 bg-[#0a0d14] rounded-lg border border-brand-border space-y-1">
+              <div class="text-white font-semibold flex items-center space-x-1.5">
+                <i class="fa-solid fa-microchip text-emerald-400 text-xs shrink-0"></i>
+                <span>ESP32 & MPU6050 IMU</span>
+              </div>
+              <p class="text-[11px] text-slate-400 font-sans leading-relaxed">
+                Interfacing via I²C communication interface at address 0x68 to collect 6-DOF acceleration and angular rates.
+              </p>
+            </div>
+            <div class="p-3.5 bg-[#0a0d14] rounded-lg border border-brand-border space-y-1">
+              <div class="text-white font-semibold flex items-center space-x-1.5">
+                <i class="fa-solid fa-terminal text-brand-blue text-xs shrink-0"></i>
+                <span>Serial Communication & CSV</span>
+              </div>
+              <p class="text-[11px] text-slate-400 font-sans leading-relaxed">
+                Serial communication pipeline receiving motion measurements and logging directly to CSV for post-processing in Python/MATLAB.
+              </p>
+            </div>
+          </div>
+        </div>
+        <p class="text-[11px] text-slate-400 font-sans border-t border-brand-border pt-3">
+          Connecting physical sensor acquisition with digital vehicle dynamics analysis pipelines.
+        </p>
+      </article>
+    </section>
+
+    <section class="p-5 sm:p-6 bg-brand-card border border-brand-border rounded-2xl flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
+      <div class="space-y-1">
+        <h3 class="text-sm sm:text-base font-bold text-white font-racing tracking-wide">
+          See These Tools Applied in Real Engineering Projects
+        </h3>
+        <p class="text-xs text-slate-400 font-sans">
+          Explore calculations, methodologies, test results and preliminary data across 5 detailed case studies.
+        </p>
+      </div>
+      <a href="projects.html" class="justify-center bg-brand-accent hover:bg-brand-accentHover text-white px-5 py-2.5 rounded-lg text-xs font-semibold flex items-center space-x-2 transition shrink-0 shadow-md text-center">
+        <span>View Engineering Projects</span>
+        <i class="fa-solid fa-arrow-right text-xs"></i>
+      </a>
+    </section>
+  </main>
+
+  <footer class="w-full bg-[#070a0f] border-t border-brand-border px-4 sm:px-8 py-4 mt-8 sm:mt-12 text-[11px] font-mono text-slate-400">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
+      <div class="flex items-center space-x-2">
+        <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+        <span class="text-slate-300 font-semibold uppercase">READY TO BUILD. ANALYSE. PERFORM.</span>
+      </div>
+      <div class="flex items-center space-x-3 sm:space-x-4">
+        <span class="text-white font-semibold">Krishang Srivastava</span>
+        <span class="text-slate-600">|</span>
+        <a href="https://github.com/krishangsrivastava" target="_blank" rel="noopener noreferrer" class="hover:text-white transition">GitHub</a>
+        <span class="text-slate-600">|</span>
+        <a href="https://www.linkedin.com/in/krishang-srivastava18" target="_blank" rel="noopener noreferrer" class="hover:text-brand-blue transition">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobile-menu');
+      const icon = document.getElementById('menu-icon');
+      const isHidden = menu.classList.toggle('hidden');
+      if (icon) {
+        icon.className = isHidden ? 'fa-solid fa-bars text-sm' : 'fa-solid fa-xmark text-sm';
+      }
+    }
+
+    function requestCVViaEmail() {
+      const subject = encodeURIComponent("CV Request - Krishang Srivastava");
+      const body = encodeURIComponent("Hello Krishang,\n\nI would like to request a copy of your CV/Resume.\n\nOrganization: \nRole/Opportunity: \n\nBest regards,");
+      showToast("Opening email client to request CV...");
+      setTimeout(() => {
+        window.location.href = `mailto:krishangsrivastava1805@gmail.com?subject=${subject}&body=${body}`;
+      }, 300);
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toast-message');
+      toastMsg.textContent = message;
+      toast.classList.remove('-translate-y-24', 'opacity-0', 'pointer-events-none');
+      toast.classList.add('translate-y-0', 'opacity-100');
+      clearTimeout(window.__toastTimer);
+      window.__toastTimer = setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('-translate-y-24', 'opacity-0', 'pointer-events-none');
+      }, 3000);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#070a0f">
+  <title>Engineering Projects | Krishang Srivastava</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        screens: {
+          'xs': '420px',
+          'sm': '640px',
+          'md': '768px',
+          'lg': '1024px',
+          'xl': '1280px'
+        },
+        extend: {
+          fontFamily: {
+            sans: ['"Inter"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+            racing: ['"Chakra Petch"', 'sans-serif']
+          },
+          colors: {
+            brand: {
+              black: '#070a0f',
+              dark: '#0d111a',
+              card: '#121722',
+              cardHover: '#182030',
+              border: '#1e2738',
+              borderLight: '#2c3950',
+              accent: '#e11d48',
+              accentHover: '#be123c',
+              gold: '#f59e0b',
+              blue: '#38bdf8',
+              emerald: '#10b981',
+              slate: '#94a3b8'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #070a0f; }
+    ::-webkit-scrollbar-thumb { background: #1e2738; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #e11d48; }
+    .blueprint-grid {
+      background-color: #070a0f;
+      background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+  </style>
+</head>
+<body class="blueprint-grid text-slate-200 font-sans min-h-screen selection:bg-rose-600 selection:text-white flex flex-col justify-between">
+  <div id="toast" class="fixed top-5 right-4 sm:top-20 sm:right-6 z-50 transform -translate-y-24 opacity-0 pointer-events-none transition-all duration-300 flex items-center space-x-3 bg-brand-card border border-brand-borderLight text-white px-4 py-3 rounded-xl shadow-2xl max-w-[90vw] sm:max-w-md">
+    <div class="w-8 h-8 rounded-lg bg-brand-accent/20 text-brand-accent flex items-center justify-center shrink-0">
+      <i class="fa-solid fa-check text-sm"></i>
+    </div>
+    <div class="min-w-0">
+      <p class="text-xs font-semibold text-white">System Notification</p>
+      <p id="toast-message" class="text-xs font-mono text-slate-300 truncate">Action completed</p>
+    </div>
+  </div>
+
+  <header class="sticky top-0 z-40 w-full bg-[#070a0f]/95 backdrop-blur-md border-b border-brand-border px-3 sm:px-6 lg:px-8 py-2.5 sm:py-3">
+    <div class="max-w-6xl mx-auto flex items-center justify-between gap-2 sm:gap-4">
+      <a href="index.html" class="flex items-center space-x-2 sm:space-x-3 group min-w-0 flex-shrink">
+        <div class="flex items-center space-x-1 sm:space-x-1.5 shrink-0">
+          <span class="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-brand-accent inline-block"></span>
+          <span class="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-brand-gold inline-block"></span>
+          <span class="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-brand-blue inline-block"></span>
+        </div>
+        <div class="h-4 w-px bg-brand-border hidden sm:block"></div>
+        <span class="font-racing font-bold text-xs sm:text-sm tracking-wider text-white group-hover:text-brand-accent transition truncate">
+          KRISHANG SRIVASTAVA
+        </span>
+      </a>
+
+      <nav class="hidden md:flex items-center space-x-1 text-xs font-mono font-medium">
+        <a href="index.html" class="px-3 py-1.5 rounded-md text-slate-300 hover:text-white hover:bg-brand-card transition">About</a>
+        <a href="toolkit.html" class="px-3 py-1.5 rounded-md text-slate-300 hover:text-white hover:bg-brand-card transition">Engineering Toolkit</a>
+        <a href="projects.html" class="px-3 py-1.5 rounded-md text-brand-accent bg-brand-card font-semibold transition">Engineering Projects</a>
+        <a href="experience.html" class="px-3 py-1.5 rounded-md text-slate-300 hover:text-white hover:bg-brand-card transition">Experience & Education</a>
+        <a href="contact.html" class="px-3 py-1.5 rounded-md text-slate-300 hover:text-white hover:bg-brand-card transition">Contact</a>
+      </nav>
+
+      <div class="flex items-center space-x-1.5 sm:space-x-3 shrink-0">
+        <a href="https://github.com/krishangsrivastava" target="_blank" rel="noopener noreferrer" title="GitHub Profile" class="hidden sm:inline-flex text-slate-400 hover:text-white transition p-1.5">
+          <i class="fa-brands fa-github text-base"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/krishang-srivastava18" target="_blank" rel="noopener noreferrer" title="LinkedIn Profile" class="hidden sm:inline-flex text-slate-400 hover:text-brand-blue transition p-1.5">
+          <i class="fa-brands fa-linkedin text-base"></i>
+        </a>
+        <div class="h-4 w-px bg-brand-border hidden sm:block"></div>
+        <button onclick="requestCVViaEmail()" class="bg-brand-accent hover:bg-brand-accentHover text-white px-2.5 sm:px-3.5 py-1.5 rounded-lg text-xs font-medium flex items-center space-x-1.5 transition shadow-sm">
+          <i class="fa-regular fa-file-lines text-xs"></i>
+          <span class="hidden xs:inline">Request CV</span>
+          <span class="xs:hidden">CV</span>
+        </button>
+        <button onclick="toggleMobileMenu()" aria-label="Toggle navigation" class="md:hidden w-8 h-8 rounded-lg bg-brand-card border border-brand-border text-slate-300 hover:text-white flex items-center justify-center transition">
+          <i id="menu-icon" class="fa-solid fa-bars text-sm"></i>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobile-menu" class="hidden md:hidden border-t border-brand-border mt-2.5 pt-3 pb-3 space-y-2 font-mono text-xs">
+      <div class="space-y-1">
+        <a href="index.html" class="block px-3.5 py-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-brand-card">About</a>
+        <a href="toolkit.html" class="block px-3.5 py-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-brand-card">Engineering Toolkit</a>
+        <a href="projects.html" class="block px-3.5 py-2.5 rounded-lg text-brand-accent bg-brand-card font-semibold">Engineering Projects</a>
+        <a href="experience.html" class="block px-3.5 py-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-brand-card">Experience & Education</a>
+        <a href="contact.html" class="block px-3.5 py-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-brand-card">Contact</a>
+      </div>
+      <div class="pt-2.5 border-t border-brand-border/70 flex items-center justify-between px-2 text-slate-400">
+        <span class="text-[11px]">Connect:</span>
+        <div class="flex items-center space-x-4">
+          <a href="https://github.com/krishangsrivastava" target="_blank" rel="noopener noreferrer" class="hover:text-white transition flex items-center space-x-1.5">
+            <i class="fa-brands fa-github text-sm"></i>
+            <span>GitHub</span>
+          </a>
+          <a href="https://www.linkedin.com/in/krishang-srivastava18" target="_blank" rel="noopener noreferrer" class="hover:text-brand-blue transition flex items-center space-x-1.5">
+            <i class="fa-brands fa-linkedin text-sm"></i>
+            <span>LinkedIn</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="w-full max-w-6xl mx-auto px-4 sm:px-8 py-6 sm:py-12 space-y-8 sm:space-y-10 flex-1">
+    <section class="border-b border-brand-border pb-6 space-y-2">
+      <div class="flex items-center space-x-2">
+        <span class="w-2 h-2 rounded-full bg-brand-accent animate-pulse"></span>
+        <span class="text-xs font-mono text-brand-accent font-semibold uppercase tracking-wider">
+          Core Technical Showcase
+        </span>
+      </div>
+      <h1 class="text-2xl xs:text-3xl sm:text-5xl font-racing font-bold text-white tracking-wide uppercase">
+        Engineering Projects
+      </h1>
+      <p class="text-xs sm:text-base text-slate-300 font-sans max-w-3xl leading-relaxed">
+        Technical investigations, mechanical design decisions, simulations, embedded DAQ hardware and telemetry analysis. Click <strong class="text-white">View Case Study</strong> on any project to inspect full problem statements, methodologies, calculations, results, and limitations.
+      </p>
+    </section>
+
+    <section class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+      <article class="bg-brand-card border border-brand-border hover:border-brand-accent transition-all duration-200 p-5 sm:p-6 rounded-2xl flex flex-col justify-between group space-y-4">
+        <div class="space-y-3">
+          <div class="flex flex-wrap items-center justify-between gap-2 text-xs font-mono">
+            <span class="text-brand-accent bg-brand-accent/10 border border-brand-accent/30 px-2.5 py-0.5 rounded font-semibold">
+              PROJECT 01
+            </span>
+            <span class="text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20 text-[11px]">
+              Status: Completed
+            </span>
+          </div>
+
+          <div class="space-y-1">
+            <span class="text-xs font-mono text-slate-400">Vehicle Dynamics & Tyre Engineering</span>
+            <h2 class="text-base sm:text-lg font-bold text-white group-hover:text-rose-400 transition font-racing tracking-wide">
+              Racing Tyre Characterisation & Performance Modelling
+            </h2>
+          </div>
+
+          <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-sans">
+            Investigated the force-generating characteristics of racing tyres using experimental tyre-test data in MATLAB. Analysed lateral force against slip angle across vertical load bands (200 N to 1100 N) and camber settings (0°, 2°, 4°) to evaluate cornering stiffness and tyre limits for vehicle dynamics modelling.
+          </p>
+
+          <div class="p-3 bg-[#0a0d14] rounded-lg border border-brand-border text-xs font-mono space-y-1 text-slate-300">
+            <div class="text-[11px] text-slate-500 uppercase">Key Verified Output / Deliverable:</div>
+            <div class="text-white font-medium">Peak Lateral Force ~1840 N @ 10.37° Slip (682 N Load) | 2° Camber Peak: 1840 N</div>
+          </div>
+        </div>
+
+        <div class="pt-3 border-t border-brand-border flex items-center justify-between text-xs font-mono">
+          <span class="text-slate-400 truncate mr-2">MATLAB, Experimental Data</span>
+          <button onclick="openCaseStudyModal('cs-01')" class="text-brand-accent hover:text-white font-semibold flex items-center space-x-1.5 transition shrink-0">
+            <span>View Case Study</span>
+            <i class="fa-solid fa-arrow-right text-[11px]"></i>
+          </button>
+        </div>
+      </article>
+
+      <article class="bg-brand-card border border-brand-border hover:border-brand-blue transition-all duration-200 p-5 sm:p-6 rounded-2xl flex flex-col justify-between group space-y-4">
+        <div class="space-y-3">
+          <div class="flex flex-wrap items-center justify-between gap-2 text-xs font-mono">
+            <span class="text-brand-blue bg-sky-500/10 border border-sky-500/30 px-2.5 py-0.5 rounded font-semibold">
+              PROJECT 02
+            </span>
+            <span class="text-brand-gold bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20 text-[11px]">
+              Status: In Progress
+            </span>
+          </div>
+
+          <div class="space-y-1">
+            <span class="text-xs font-mono text-slate-400">Vehicle Performance & Simulation</span>
+            <h2 class="text-base sm:text-lg font-bold text-white group-hover:text-sky-300 transition font-racing tracking-wide">
+              MATLAB Lap-Time Simulator
+            </h2>
+          </div>
+
+          <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-sans">
+            Developed a MATLAB-based lap-time simulation framework to investigate vehicle parameters, tyre-force limits, acceleration, braking and cornering performance. Uses a forward-pass workflow to estimate vehicle speed profiles, cornering limits, and straight-line acceleration with a 250 kg / KTM 390 powertrain model.
+          </p>
+
+          <div class="p-3 bg-[#0a0d14] rounded-lg border border-brand-border text-xs font-mono space-y-1 text-slate-300">
+            <div class="text-[11px] text-slate-500 uppercase">Key Verified Output / Deliverable:</div>
+            <div class="text-white font-medium">Estimated Corner Speed: 63.78 km/h | Braking Distance: 18.67 m | Lap Time: 22.19 s</div>
+          </div>
+        </div>
+
+        <div class="pt-3 border-t border-brand-border flex items-center justify-between text-xs font-mono">
+          <span class="text-slate-400 truncate mr-2">MATLAB, Vehicle Dynamics</span>
+          <button onclick="openCaseStudyModal('cs-02')" class="text-brand-blue hover:text-white font-semibold flex items-center space-x-1.5 transition shrink-0">
+            <span>View Case Study</span>
+            <i class="fa-solid fa-arrow-right text-[11px]"></i>
+          </button>
+        </div>
+      </article>
+
+      <article class="bg-brand-card border border-brand-border hover:border-brand-accent transition-all duration-200 p-5 sm:p-6 rounded-2xl flex flex-col justify-between group space-y-4">
+        <div class="space-y-3">
+          <div class="flex flex-wrap items-center justify-between gap-2 text-xs font-mono">
+            <span class="text-brand-accent bg-brand-accent/10 border border-brand-accent/30 px-2.5 py-0.5 rounded font-semibold">
+              PROJECT 03
+            </span>
+            <span class="text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20 text-[11px]">
+              Status: Completed / Testing
+            </span>
+          </div>
+
+          <div class="space-y-1">
+            <span class="text-xs font-mono text-slate-400">Braking Systems & Mechanical Design • Camber Racing</span>
+            <h2 class="text-base sm:text-lg font-bold text-white group-hover:text-rose-400 transition font-racing tracking-wide">
+              Formula Student Braking System Design & Validation
+            </h2>
+          </div>
+
+          <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-sans">
+            Worked on the design, optimization and physical track testing of Camber Racing's Formula Student braking system. Performed hydraulic calculations (4.5 pedal ratio, 15 mm / 15.8 mm master cylinders), mechanical balance bar bias adjustment, and 168 mm rotor CAD packaging within wheel-clearance constraints.
+          </p>
+
+          <div class="p-3 bg-[#0a0d14] rounded-lg border border-brand-border text-xs font-mono space-y-1 text-slate-300">
+            <div class="text-[11px] text-slate-500 uppercase">Key Verified Output / Deliverable:</div>
+            <div class="text-white font-medium">Hydraulic Sizing, 168 mm Rotor CAD Packaging & Dynamic 4-Wheel Lockup Validation</div>
+          </div>
+        </div>
+
+        <div class="pt-3 border-t border-brand-border flex items-center justify-between text-xs font-mono">
+          <span class="text-slate-400 truncate mr-2">SolidWorks, Calculations</span>
+          <button onclick="openCaseStudyModal('cs-03')" class="text-brand-accent hover:text-white font-semibold flex items-center space-x-1.5 transition shrink-0">
+            <span>View Case Study</span>
+            <i class="fa-solid fa-arrow-right text-[11px]"></i>
+          </button>
+        </div>
+      </article>
+
+      <article class="bg-brand-card border border-brand-border hover:border-emerald-400 transition-all duration-200 p-5 sm:p-6 rounded-2xl flex flex-col justify-between group space-y-4">
+        <div class="space-y-3">
+          <div class="flex flex-wrap items-center justify-between gap-2 text-xs font-mono">
+            <span class="text-emerald-400 bg-emerald-500/10 border border-emerald-500/30 px-2.5 py-0.5 rounded font-semibold">
+              PROJECT 04
+            </span>
+            <span class="text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20 text-[11px]">
+              Status: Completed Prototype
+            </span>
+          </div>
+
+          <div class="space-y-1">
+            <span class="text-xs font-mono text-slate-400">Embedded Systems & Motorsport Data Acquisition</span>
+            <h2 class="text-base sm:text-lg font-bold text-white group-hover:text-emerald-300 transition font-racing tracking-wide">
+              IMU-Based Vehicle Motion Data Acquisition System
+            </h2>
+          </div>
+
+          <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-sans">
+            Developed a prototype inertial-sensor data acquisition system using an ESP32 microcontroller and MPU6050 6-axis IMU over I²C (0x68). Built a Python serial-logging pipeline storing 1035 motion samples to CSV for longitudinal/lateral G-force and yaw velocity analysis during vehicle testing.
+          </p>
+
+          <div class="p-3 bg-[#0a0d14] rounded-lg border border-brand-border text-xs font-mono space-y-1 text-slate-300">
+            <div class="text-[11px] text-slate-500 uppercase">Key Verified Output / Deliverable:</div>
+            <div class="text-white font-medium">Working I²C Sensor Comm (0x68), ESP32 Hardware Prototype & 1035 CSV Motion Samples</div>
+          </div>
+        </div>
+
+        <div class="pt-3 border-t border-brand-border flex items-center justify-between text-xs font-mono">
+          <span class="text-slate-400 truncate mr-2">ESP32, Python, CSV</span>
+          <button onclick="openCaseStudyModal('cs-04')" class="text-emerald-400 hover:text-white font-semibold flex items-center space-x-1.5 transition shrink-0">
+            <span>View Case Study</span>
+            <i class="fa-solid fa-arrow-right text-[11px]"></i>
+          </button>
+        </div>
+      </article>
+
+      <article class="bg-brand-card border border-brand-border hover:border-brand-gold transition-all duration-200 p-5 sm:p-6 rounded-2xl flex flex-col justify-between group space-y-4 md:col-span-2">
+        <div class="space-y-3">
+          <div class="flex flex-wrap items-center justify-between gap-2 text-xs font-mono">
+            <span class="text-brand-gold bg-amber-500/10 border border-amber-500/30 px-2.5 py-0.5 rounded font-semibold">
+              PROJECT 05
+            </span>
+            <span class="text-brand-blue bg-sky-500/10 px-2 py-0.5 rounded border border-sky-500/20 text-[11px]">
+              Status: Developing / Active
+            </span>
+          </div>
+
+          <div class="space-y-1">
+            <span class="text-xs font-mono text-slate-400">Race Engineering, Telemetry & Vehicle Performance</span>
+            <h2 class="text-base sm:text-lg font-bold text-white group-hover:text-amber-300 transition font-racing tracking-wide">
+              Motorsport Telemetry Analysis & Driver Performance
+            </h2>
+          </div>
+
+          <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-sans">
+            Developed practical telemetry analysis workflows using MoTeC i2 and Garage61, emphasizing reference-lap comparisons, corner-by-corner analysis (braking points, brake release, throttle pickup, apex speed), and vehicle handling balance investigation (understeer/oversteer entry, mid, exit) to form testable engineering hypotheses.
+          </p>
+
+          <div class="p-3 bg-[#0a0d14] rounded-lg border border-brand-border text-xs font-mono space-y-1 text-slate-300">
+            <div class="text-[11px] text-slate-500 uppercase">Key Verified Output / Deliverable:</div>
+            <div class="text-white font-medium">Reference-Lap Comparisons, Telemetry Trace Overlays, Sector Notes & Driver Development Recommendations</div>
+          </div>
+        </div>
+
+        <div class="pt-3 border-t border-brand-border flex items-center justify-between text-xs font-mono">
+          <span class="text-slate-400 truncate mr-2">MoTeC i2, Garage61</span>
+          <button onclick="openCaseStudyModal('cs-05')" class="text-brand-gold hover:text-white font-semibold flex items-center space-x-1.5 transition shrink-0">
+            <span>View Case Study</span>
+            <i class="fa-solid fa-arrow-right text-[11px]"></i>
+          </button>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer class="w-full bg-[#070a0f] border-t border-brand-border px-4 sm:px-8 py-4 mt-8 sm:mt-12 text-[11px] font-mono text-slate-400">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
+      <div class="flex items-center space-x-2">
+        <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+        <span class="text-slate-300 font-semibold uppercase">READY TO BUILD. ANALYSE. PERFORM.</span>
+      </div>
+      <div class="flex items-center space-x-3 sm:space-x-4">
+        <span class="text-white font-semibold">Krishang Srivastava</span>
+        <span class="text-slate-600">|</span>
+        <a href="https://github.com/krishangsrivastava" target="_blank" rel="noopener noreferrer" class="hover:text-white transition">GitHub</a>
+        <span class="text-slate-600">|</span>
+        <a href="https://www.linkedin.com/in/krishang-srivastava18" target="_blank" rel="noopener noreferrer" class="hover:text-brand-blue transition">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+  <div id="case-study-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-3 sm:p-6 overflow-y-auto" onclick="handleModalBackdropClick(event)">
+    <div class="bg-brand-card border border-brand-border rounded-2xl w-full max-w-4xl max-h-[92vh] overflow-y-auto shadow-2xl p-5 sm:p-8 space-y-6 relative text-slate-200">
+      <div class="flex items-center justify-between border-b border-brand-border pb-3 sm:pb-4 gap-2">
+        <div class="flex items-center space-x-2 text-xs font-mono">
+          <span id="modal-nav-indicator" class="text-slate-400 font-bold">1 / 5</span>
+          <span class="text-slate-600 hidden xs:inline">•</span>
+          <span class="text-slate-400 hidden xs:inline">Technical Case Study</span>
+        </div>
+        <div class="flex items-center space-x-1.5 sm:space-x-2 shrink-0">
+          <button onclick="navigateModal(-1)" class="px-2.5 py-1 bg-[#0a0d14] hover:bg-brand-cardHover border border-brand-border rounded text-xs font-mono text-slate-300 transition" title="Previous Project">
+            <i class="fa-solid fa-chevron-left mr-1"></i> Prev
+          </button>
+          <button onclick="navigateModal(1)" class="px-2.5 py-1 bg-[#0a0d14] hover:bg-brand-cardHover border border-brand-border rounded text-xs font-mono text-slate-300 transition" title="Next Project">
+            Next <i class="fa-solid fa-chevron-right ml-1"></i>
+          </button>
+          <button onclick="closeCaseStudyModal()" class="w-8 h-8 rounded-lg bg-[#0a0d14] hover:bg-brand-accent hover:text-white border border-brand-border text-slate-400 flex items-center justify-center transition" title="Close Case Study">
+            <i class="fa-solid fa-xmark text-sm"></i>
+          </button>
+        </div>
+      </div>
+
+      <div id="modal-content" class="space-y-6"></div>
+
+      <div class="border-t border-brand-border pt-4 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 text-xs font-mono">
+        <button onclick="closeCaseStudyModal()" class="text-slate-400 hover:text-white transition flex items-center space-x-1.5 justify-center sm:justify-start">
+          <i class="fa-solid fa-arrow-left"></i>
+          <span>Back to Projects Overview</span>
+        </button>
+        <button onclick="requestCVViaEmail()" class="text-brand-accent hover:underline font-semibold text-center sm:text-right">
+          Request My CV for Complete Documentation &rarr;
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const caseStudiesData = [
+      {
+        id: 'cs-01',
+        title: '01 — Racing Tyre Characterisation & Performance Modelling',
+        html: `
+          <div class="space-y-5 sm:space-y-6">
+            <div class="space-y-2 border-b border-brand-border pb-4">
+              <div class="flex flex-wrap items-center gap-2 text-xs font-mono">
+                <span class="bg-brand-accent/10 text-brand-accent px-2.5 py-0.5 rounded border border-brand-accent/30 font-semibold">CASE STUDY 01</span>
+                <span class="text-slate-400">Vehicle Dynamics &amp; Tyre Engineering</span>
+                <span class="text-slate-600">•</span>
+                <span class="text-brand-blue">MATLAB, Experimental Data</span>
+              </div>
+              <h2 class="text-xl sm:text-3xl font-racing font-bold text-white tracking-wide">
+                Racing Tyre Characterisation &amp; Performance Modelling
+              </h2>
+            </div>
+            <div class="bg-[#0a0d14] border border-brand-border p-4 sm:p-5 rounded-xl space-y-2">
+              <h3 class="text-xs font-bold text-white uppercase tracking-wider font-mono flex items-center space-x-2">
+                <i class="fa-solid fa-compass text-brand-accent"></i>
+                <span>Project Overview</span>
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-sans">
+                Investigated the force-generating characteristics of racing tyres using experimental tyre-test data in MATLAB. The objective was to understand how slip angle, vertical load and camber influence lateral force, and how these characteristics can inform vehicle dynamics modelling and lap-time simulation.
+              </p>
+            </div>
+            <div class="bg-[#0a0d14] border border-brand-border p-4 sm:p-5 rounded-xl space-y-3">
+              <h3 class="text-xs font-bold text-white uppercase tracking-wider font-mono flex items-center space-x-2">
+                <i class="fa-solid fa-microscope text-brand-blue"></i>
+                <span>Engineering Methodology</span>
+              </h3>
+              <ul class="text-xs sm:text-sm text-slate-300 space-y-2 list-disc list-inside font-sans">
+                <li>Processed experimental tyre datasets across vertical-load bands of <strong class="text-white">200, 450, 650, 900 and 1100 N</strong>.</li>
+                <li>Analysed lateral force against slip angle to identify peak lateral force and its corresponding slip angle.</li>
+                <li>Compared tyre-force curves at different camber settings to investigate camber sensitivity.</li>
+                <li>Examined the relationship between vertical load and lateral force to understand load sensitivity.</li>
+                <li>Investigated cornering stiffness from the lateral-force response in the appropriate slip-angle region.</li>
+                <li>Evaluated the suitability of the extracted tyre characteristics for use in vehicle performance models.</li>
+              </ul>
+            </div>
+            <div class="bg-[#0a0d14] border border-brand-border p-4 sm:p-5 rounded-xl space-y-3">
+              <h3 class="text-xs font-bold text-white uppercase tracking-wider font-mono flex items-center space-x-2">
+                <i class="fa-solid fa-chart-line text-brand-gold"></i>
+                <span>Key Results</span>
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-sans">
+                For the analysed dataset around a vertical load of 682 N, peak lateral force was approximately <strong class="text-white">1840 N at a slip angle of 10.37°</strong>.
+              </p>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 font-mono text-xs pt-1">
+                <div class="p-2.5 bg-brand-card rounded border border-brand-border text-center">
+                  <span class="text-slate-400 block text-[10px]">0° CAMBER</span>
+                  <span class="text-white font-semibold">~1797 N Peak</span>
+                </div>
+                <div class="p-2.5 bg-brand-card rounded border border-brand-accent/50 text-center">
+                  <span class="text-brand-accent block text-[10px] font-bold">2° CAMBER (HIGHEST)</span>
+                  <span class="text-white font-bold">~1840 N Peak</span>
+                </div>
+                <div class="p-2.5 bg-brand-card rounded border border-brand-border text-center">
+                  <span class="text-slate-400 block text-[10px]">4° CAMBER</span>
+                  <span class="text-white font-semibold">~1774 N Peak</span>
+                </div>
+              </div>
+              <p class="text-xs text-slate-400 leading-relaxed italic pt-1 font-sans">
+                Within this dataset, the 2° camber case produced the highest observed peak lateral force. These findings describe the tested data and do not establish a universally optimal camber setting.
+              </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs font-sans">
+              <div class="bg-[#0a0d14] border border-brand-border p-4 sm:p-5 rounded-xl space-y-2">
+                <h4 class="font-bold font-mono uppercase text-xs text-emerald-400">Engineering Application</h4>
+                <p class="text-slate-300 leading-relaxed">
+                  The analysis establishes a data-driven foundation for understanding tyre behaviour, extracting relevant tyre characteristics and developing more representative inputs for vehicle dynamics and lap-time simulation.
+                </p>
+                <div class="pt-2 border-t border-brand-border font-mono text-[11px] text-slate-400">
+                  <strong class="text-slate-300">Deliverables:</strong> Lateral-force curves, slip-angle analysis, camber comparison and tyre-characterisation results.
+                </div>
+              </div>
+              <div class="bg-[#0a0d14] border border-brand-border p-4 sm:p-5 rounded-xl space-y-2">
+                <h4 class="font-bold font-mono uppercase text-xs text-brand-gold">Further Development</h4>
+                <p class="text-slate-300 leading-relaxed">
+                  Refine cornering-stiffness extraction, validate force and load units, quantify load sensitivity and integrate verified tyre characteristics into the lap-time simulator.
+                </p>
+                <div class="pt-2 border-t border-brand-border">
+                  <a href="https://github.com/krishangsrivastava/racing-tire-characterization-and-performance-modelling" target="_blank" rel="noopener noreferrer" class="text-brand-accent hover:underline font-mono text-[11px] flex items-center space-x-1">
+                    <span>Inspect GitHub Repository</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        `
+      },
+      {
+        id: 'cs-02',
+        title: '02 — MATLAB Lap-Time Simulator',
+        html: `
+          <div class="space-y-5 sm:space-y-6">
+            <div class="space-y-2 border-b border-brand-border pb-4">
+              <div class="flex flex-wrap items-center gap-2 text-xs font-mono">
+                <span class="bg-sky-500/10 text-brand-blue px-2.5 py-0.5 rounded border border-sky-500/30 font-semibold">CASE STUDY 02</span>
+                <span class="text-slate-400">Vehicle Performance &amp; Simulation</span>
+                <span class="text-slate-600">•</span>
+                <span class="text-brand-blue">MATLAB, Vehicle Dynamics</span>
+              </div>
+              <h2 class="text-xl sm:text-3xl font-racing font-bold text-white tracking-wide">
+                MATLAB Lap-Time Simulator
+              </h2>
+            </div>
+            <div class="bg-[#0a0d14] border border-brand-border p-4 sm:p-5 rounded-xl space-y-2">
+              <h3 class="text-xs font-bold text-white uppercase tracking-wider font-mono flex items-center space-x-2">
+                <i class="fa-solid fa-compass text-brand-blue"></i>
+                <span>Project Overview</span>
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-sans">
+                Developed a MATLAB-based lap-time simulation workflow to investigate the relationship between vehicle parameters, tyre-force limits, acceleration, braking and cornering performance. The project aims to create a framework for estimating vehicle speed around a track and understanding the factors that influence predicted lap time.
+              </p>
+            </div>
+            <div class="bg-[#0a0d14] border border-brand-border p-4 sm:p-5 rounded-xl space-y-3">
+              <h3 class="text-xs font-bold text-white uppercase tracking-wider font-mono flex items-center space-x-2">
+                <i class="fa-solid fa-microscope text-brand-blue"></i>
+                <span>Engineering Methodology</span>
+              </h3>
+              <ul class="text-xs sm:text-sm text-slate-300 space-y-2 list-disc list-inside font-sans">
+                <li>Defined vehicle parameters including mass, front-to-rear weight distribution, wheelbase, centre-of-gravity height, track width and tyre radius.</li>
+                <li>Developed separate calculation modules for vehicle acceleration, combined tyre forces and straight-line acceleration.</li>
+                <li>Implemented a forward-pass workflow to estimate vehicle speed subject to available acceleration and cornering constraints.</li>
+                <li>Investigated corner-speed estimation and braking-distance calculations.</li>
+                <li>Incorporated engine characteristics and vehicle parameters to support acceleration modelling.</li>
+                <li>Structured the MATLAB scripts into reusable modules for vehicle parameters, force calculations and track simulation.</li>
+              </ul>
+            </div>
+            <div class="bg-[#0a0d14] border border-brand-border p-4 sm:p-5 rounded-xl space-y-3">
+              <h3 class="text-xs font-bold text-white uppercase tracking-wider font-mono flex items-center space-x-2">
+                <i class="fa-solid fa-car-side text-brand-gold"></i>
+                <span>Vehicle Model Parameters</span>
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-sans">
+                The working parameter set includes a vehicle mass of <strong class="text-white">250 kg</strong>, <strong class="text-white">48:52 front-to-rear weight distribution</strong>, <strong class="text-white">1555 mm wheelbase</strong>, <strong class="text-white">0.30 m centre-of-gravity height</strong> and <strong class="text-white">0.23 m tyre radius</strong>.
+              </p>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-sans">
+                The powertrain model uses nominal KTM 390 engine characteristics, including <strong class="text-white">37 Nm peak torque</strong> and <strong class="text-white">43 hp peak power</strong>.
+              </p>
+            </div>
+            <div class="bg-[#0a0d14] border border-brand-border p-4 sm:p-5 rounded-xl space-y-3">
+              <h3 class="text-xs font-bold text-white uppercase tracking-wider font-mono flex items-center space-x-2">
+                <i class="fa-solid fa-gauge text-brand-accent"></i>
+                <span>Preliminary Results</span>
+              </h3>
+              <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 font-mono text-xs">
+                <div class="p-2.5 bg-brand-card rounded border border-brand-border">
+                  <span class="text-slate-400 block text-[10px]">CORNER SPEED</span>
+                  <span class="text-white font-bold">63.78 km/h</span>
+                </div>
+                <div class="p-2.5 bg-brand-card rounded border border-brand-border">
+                  <span class="text-slate-400 block text-[10px]">BRAKING DISTANCE</span>
+                  <span class="text-white font-bold">18.67 m</span>
+                </div>
+                <div class="p-2.5 bg-brand-card rounded border border-brand-border">
+                  <span class="text-slate-400 block text-[10px]">CORNER LENGTH</span>
+                  <span class="text-white font-bold">31.42 m</span>
+                </div>
+                <div class="p-2.5 bg-brand-card rounded border border-brand-border">
+                  <span class="text-slate-400 block text-[10px]">CORNER TIME</span>
+                  <span class="text-white font-bold">1.77 s</span>
+                </div>
+                <div class="p-2.5 bg-brand-card rounded border border-brand-accent/50 col-span-2">
+                  <span class="text-brand-accent block text-[10px] font-bold">LAP-TIME ESTIMATE</span>
+                  <span class="text-white font-bold">22.19 s</span>
+                </div>
+              </div>
+              <p class="text-xs text-slate-400 leading-relaxed italic pt-1 font-sans">
+                These are simulation outputs, not independently validated vehicle-performance measurements. Their accuracy depends on the model assumptions, track representation, tyre data and implementation.
+              </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs font-sans">
+              <div class="bg-[#0a0d14] border border-brand-border p-4 sm:p-5 rounded-xl space-y-2">
+                <h4 class="font-bold font-mono uppercase text-xs text-emerald-400">Engineering Application</h4>
+                <p class="text-slate-300 leading-relaxed">
+                  The simulator provides a foundation for examining vehicle-performance limits and exploring how changes in tyre characteristics, vehicle parameters and powertrain behaviour affect predicted speed profiles and lap time.
+                </p>
+                <div class="pt-2 border-t border-brand-border font-mono text-[11px] text-slate-400">
+                  <strong class="text-slate-300">Deliverables:</strong> MATLAB simulation scripts, vehicle parameter model, corner-speed estimates, braking-distance calculations and preliminary lap-time outputs.
+                </div>
+              </div>
+              <div class="bg-[#0a0d14] border border-brand-border p-4 sm:p-5 rounded-xl space-y-2">
+                <h4 class="font-bold font-mono uppercase text-xs text-brand-gold">Further Development</h4>
+                <p class="text-slate-300 leading-relaxed">
+                  Validate the track and tyre inputs, refine braking and acceleration constraints, account for powertrain and gearing limitations, and compare predicted performance against measured vehicle data.
+                </p>
+              </div>
+            </div>
+          </div>
+        `
+      },
+      {
+        id: 'cs-03',
+        title: '03 — Formula Student Braking System Design & Validation',
+        html: `
+          <div class="space-y-5 sm:space-y-6">
+            <div class="space-y-2 border-b border-brand-border pb-4">
+              <div class="flex flex-wrap items-center gap-2 text-xs font-mono">
+                <span class="bg-brand-accent/10 text-brand-accent px-2.5 py-0.5 rounded border border-brand-accent/30 font-semibold">CASE STUDY 03</span>
+                <span class="text-slate-400">Braking Systems &amp; Mechanical Design</span>
+                <span class="text-slate-600">•</span>
+                <span class="text-brand-blue">Camber Racing</span>
+              </div>
+              <h2 class="text-xl sm:text-3xl font-racing font-bold text-white tracking-wide">
+                Formula Student Braking System Design &amp; Validation
+              </h2>
+            </div>
+            <div class="bg-[#0a0d14] border border-brand-border p-4 sm:p-5 rounded-xl space-y-2">
+              <h3 class="text-xs font-bold text-white uppercase tracking-wider font-mono flex items-center space-x-2">
+                <i class="fa-solid fa-compass text-brand-accent"></i>
+                <span>Project Overview</span>
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-sans">
+                Worked on the design, optimisation and testing of a Formula Student race-car braking system with Camber Racing. The work focused on hydraulic sizing, pedal leverage, brake torque, front-to-rear bias, rotor packaging and vehicle-level integration. The objective was to develop a braking system that meets the vehicle's performance, packaging, safety and competition requirements while allowing effective brake-bias adjustment and repeatable testing.
+              </p>
+            </div>
+            <div class="space-y-3">
+              <h3 class="text-xs font-bold text-white uppercase tracking-wider font-mono flex items-center space-x-2">
+                <i class="fa-solid fa-gears text-brand-blue"></i>
+                <span>Engineering Methodology</span>
+              </h3>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-sans">
+                <div class="bg-[#0a0d14] border border-brand-border p-4 rounded-xl space-y-2">
+                  <div class="font-bold text-white font-mono text-xs text-brand-accent border-b border-brand-border pb-1">
+                    Hydraulic System Design
+                  </div>
+                  <ul class="text-slate-300 space-y-1.5 list-disc list-inside">
+                    <li>Performed brake-torque and hydraulic calculations to assess braking-system requirements.</li>
+                    <li>Worked with a <strong class="text-white">pedal ratio of 4.5</strong> and front/rear master cylinders of <strong class="text-white">15 mm and 15.8 mm</strong>.</li>
+                    <li>Evaluated the relationship between pedal force, master-cylinder pressure, caliper piston area and brake torque.</li>
+                    <li>Considered caliper characteristics and pad friction when evaluating braking capability.</li>
+                  </ul>
+                </div>
+                <div class="bg-[#0a0d14] border border-brand-border p-4 rounded-xl space-y-2">
+                  <div class="font-bold text-white font-mono text-xs text-brand-blue border-b border-brand-border pb-1">
+                    Brake Bias &amp; System Balance
+                  </div>
+                  <ul class="text-slate-300 space-y-1.5 list-disc list-inside">
+                    <li>Analysed front-to-rear braking-force distribution using a mechanical balance bar.</li>
+                    <li>Investigated balance-bar adjustments and master-cylinder input distribution to influence front and rear braking effort.</li>
+                    <li>Considered dynamic axle loads and tyre grip when evaluating wheel-lock behaviour.</li>
+                  </ul>
+                </div>
+                <div class="bg-[#0a0d14] border border-brand-border p-4 rounded-xl space-y-2">
+                  <div class="font-bold text-white font-mono text-xs text-brand-gold border-b border-brand-border pb-1">
+                    Rotor Design &amp; Packaging
+                  </div>
+                  <ul class="text-slate-300 space-y-1.5 list-disc list-inside">
+                    <li>Worked on brake-rotor sizing and CAD design within wheel-clearance constraints.</li>
+                    <li>Evaluated a rotor outer diameter of <strong class="text-white">168 mm against earlier 173 mm</strong> configuration.</li>
+                    <li>Considered effective braking radius, rotor thickness, material selection and caliper compatibility.</li>
+                  </ul>
+                </div>
+                <div class="bg-[#0a0d14] border border-brand-border p-4 rounded-xl space-y-2">
+                  <div class="font-bold text-white font-mono text-xs text-emerald-400 border-b border-brand-border pb-1">
+                    Vehicle Testing
+                  </div>
+                  <ul class="text-slate-300 space-y-1.5 list-disc list-inside">
+                    <li>Supported brake testing to investigate wheel-lock behaviour and assess braking-system operation.</li>
+                    <li>Considered tyre condition, brake bias and system setup during test preparation.</li>
+                    <li>Used testing and driver feedback to identify areas requiring further adjustment and validation.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="bg-[#0a0d14] border border-brand-border p-4 sm:p-5 rounded-xl space-y-2 font-sans text-xs">
+              <h3 class="text-xs font-bold text-white uppercase tracking-wider font-mono flex items-center space-x-2">
+                <i class="fa-solid fa-triangle-exclamation text-brand-gold"></i>
+                <span>Engineering Considerations</span>
+              </h3>
+              <p class="text-slate-300 leading-relaxed">
+                Rotor diameter influences the torque generated for a given pad friction force and effective radius. However, vehicle deceleration cannot be determined from rotor diameter alone. The achievable deceleration also depends on tyre-road friction, dynamic axle loads, brake-force distribution, hydraulic pressure and whether the braking system can utilise the available tyre grip. The final design therefore requires system-level calculations and controlled vehicle testing.
+              </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs font-sans">
+              <div class="bg-[#0a0d14] border border-brand-border p-4 sm:p-5 rounded-xl space-y-2">
+                <h4 class="font-bold font-mono uppercase text-xs text-emerald-400">Engineering Application</h4>
+                <p class="text-slate-300 leading-relaxed">
+                  Demonstrates the interaction between hydraulic design, mechanical leverage, brake torque, packaging constraints, tyre grip and vehicle-level validation in a Formula Student braking system.
+                </p>
+                <div class="pt-2 border-t border-brand-border font-mono text-[11px] text-slate-400">
+                  <strong class="text-slate-300">Deliverables:</strong> Hydraulic calculations, brake-torque analysis, brake-bias evaluation, rotor design work and vehicle-test observations.
+                </div>
+              </div>
+              <div class="bg-[#0a0d14] border border-brand-border p-4 sm:p-5 rounded-xl space-y-2">
+                <h4 class="font-bold font-mono uppercase text-xs text-brand-gold">Further Development</h4>
+                <p class="text-slate-300 leading-relaxed">
+                  Complete brake-bias mapping, validate the braking-force distribution, conduct repeatable stopping tests and document the final design against the applicable Formula Student rules.
+                </p>
+              </div>
+            </div>
+          </div>
+        `
+      },
+      {
+        id: 'cs-04',
+        title: '04 — IMU-Based Vehicle Motion Data Acquisition System',
+        html: `
+          <div class="space-y-5 sm:space-y-6">
+            <div class="space-y-2 border-b border-brand-border pb-4">
+              <div class="flex flex-wrap items-center gap-2 text-xs font-mono">
+                <span class="bg-emerald-500/10 text-emerald-400 px-2.5 py-0.5 rounded border border-emerald-500/30 font-semibold">CASE STUDY 04</span>
+                <span class="text-slate-400">Embedded Systems &amp; DAQ</span>
+                <span class="text-slate-600">•</span>
+                <span class="text-brand-blue">ESP32, MPU6050, Python, CSV</span>
+              </div>
+              <h2 class="text-xl sm:text-3xl font-racing font-bold text-white tracking-wide">
+                IMU-Based Vehicle Motion Data Acquisition System
+              </h2>
+            </div>
+            <div class="bg-[#0a0d14] border border-brand-border p-4 sm:p-5 rounded-xl space-y-2">
+              <h3 class="text-xs font-bold text-white uppercase tracking-wider font-mono flex items-center space-x-2">
+                <i class="fa-solid fa-compass text-emerald-400"></i>
+                <span>Project Overview</span>
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-sans">
+                Developed a prototype inertial-sensor data acquisition system using an ESP32 microcontroller and an MPU6050 six-axis inertial measurement unit. The objective was to establish a working pipeline for collecting, transferring and storing motion-sensor data for subsequent engineering analysis. The project connects embedded hardware development with the broader goal of acquiring useful vehicle-motion data for vehicle dynamics investigations.
+              </p>
+            </div>
+            <div class="space-y-3">
+              <h3 class="text-xs font-bold text-white uppercase tracking-wider font-mono flex items-center space-x-2">
+                <i class="fa-solid fa-microchip text-brand-blue"></i>
+                <span>Engineering Methodology</span>
+              </h3>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs font-sans">
+                <div class="bg-[#0a0d14] border border-brand-border p-4 rounded-xl space-y-2">
+                  <div class="font-bold text-white font-mono text-xs text-brand-blue border-b border-brand-border pb-1">
+                    Sensor Integration
+                  </div>
+                  <ul class="text-slate-300 space-y-1.5 list-disc list-inside">
+                    <li>Connected the MPU6050 to the ESP32 through the I²C communication interface.</li>
+                    <li>Verified sensor communication by detecting the device at <strong class="text-white">I²C address 0x68</strong>.</li>
+                    <li>Worked through hardware connections, wiring and prototype packaging considerations.</li>
+                  </ul>
+                </div>
+                <div class="bg-[#0a0d14] border border-brand-border p-4 rounded-xl space-y-2">
+                  <div class="font-bold text-white font-mono text-xs text-emerald-400 border-b border-brand-border pb-1">
+                    Serial Data Acquisition
+                  </div>
+                  <ul class="text-slate-300 space-y-1.5 list-disc list-inside">
+                    <li>Established serial communication between the microcontroller and a computer.</li>
+                    <li>Developed a Python-based logging workflow using serial communication to receive and record incoming sensor data.</li>
+                    <li>Troubleshot serial-port access and communication issues during setup.</li>
+                    <li>Stored the recorded samples in CSV format for subsequent inspection and processing.</li>
+                  </ul>
+                </div>
+                <div class="bg-[#0a0d14] border border-brand-border p-4 rounded-xl space-y-2">
+                  <div class="font-bold text-white font-mono text-xs text-brand-gold border-b border-brand-border pb-1">
+                    Data Processing Workflow
+                  </div>
+                  <ul class="text-slate-300 space-y-1.5 list-disc list-inside">
+                    <li>Established a data path from the inertial sensor to the microcontroller, then to a computer and finally to a CSV dataset.</li>
+                    <li>Prepared the logged data for further analysis in Python or MATLAB.</li>
+                    <li>Identified calibration, coordinate alignment and sampling-rate verification requirements.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="bg-[#0a0d14] border border-brand-border p-4 sm:p-5 rounded-xl space-y-2 font-sans text-xs">
+              <h3 class="text-xs font-bold text-white uppercase tracking-wider font-mono flex items-center space-x-2">
+                <i class="fa-solid fa-circle-check text-emerald-400"></i>
+                <span>Prototype Results</span>
+              </h3>
+              <p class="text-slate-300 leading-relaxed">
+                The sensor was detected successfully over I²C (address 0x68), and the Python serial-logging workflow recorded <strong class="text-white">1035 samples</strong> into a CSV file.
+              </p>
+              <p class="text-slate-400 italic pt-1">
+                This demonstrates successful sensor communication and data logging. It does not, by itself, establish calibrated vehicle-motion measurements or a verified sampling frequency.
+              </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs font-sans">
+              <div class="bg-[#0a0d14] border border-brand-border p-4 sm:p-5 rounded-xl space-y-2">
+                <h4 class="font-bold font-mono uppercase text-xs text-emerald-400">Engineering Application</h4>
+                <p class="text-slate-300 leading-relaxed">
+                  The prototype establishes the foundation for collecting inertial data that could support future analysis of longitudinal and lateral acceleration and rotational motion during vehicle testing.
+                </p>
+                <div class="pt-2 border-t border-brand-border font-mono text-[11px] text-slate-400">
+                  <strong class="text-slate-300">Deliverables:</strong> Working sensor communication, ESP32 prototype, Python serial logger and CSV data capture.
+                </div>
+              </div>
+              <div class="bg-[#0a0d14] border border-brand-border p-4 sm:p-5 rounded-xl space-y-2">
+                <h4 class="font-bold font-mono uppercase text-xs text-brand-gold">Further Development</h4>
+                <p class="text-slate-300 leading-relaxed">
+                  Verify sampling frequency and timestamp handling, calibrate the sensor, define mounting orientation, implement suitable filtering and validate the system against known reference measurements.
+                </p>
+                <div class="pt-2 border-t border-brand-border">
+                  <a href="https://github.com/krishangsrivastava/IMU-Based-Vehicle-Dynamics-Monitoring" target="_blank" rel="noopener noreferrer" class="text-emerald-400 hover:underline font-mono text-[11px] flex items-center space-x-1">
+                    <span>Inspect GitHub Repository</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        `
+      },
+      {
+        id: 'cs-05',
+        title: '05 — Motorsport Telemetry Analysis & Driver Performance',
+        html: `
+          <div class="space-y-5 sm:space-y-6">
+            <div class="space-y-2 border-b border-brand-border pb-4">
+              <div class="flex flex-wrap items-center gap-2 text-xs font-mono">
+                <span class="bg-amber-500/10 text-brand-gold px-2.5 py-0.5 rounded border border-amber-500/30 font-semibold">CASE STUDY 05</span>
+                <span class="text-slate-400">Race Engineering &amp; Telemetry</span>
+                <span class="text-slate-600">•</span>
+                <span class="text-brand-blue">MoTeC i2, Garage61</span>
+              </div>
+              <h2 class="text-xl sm:text-3xl font-racing font-bold text-white tracking-wide">
+                Motorsport Telemetry Analysis &amp; Driver Performance
+              </h2>
+            </div>
+            <div class="bg-[#0a0d14] border border-brand-border p-4 sm:p-5 rounded-xl space-y-2">
+              <h3 class="text-xs font-bold text-white uppercase tracking-wider font-mono flex items-center space-x-2">
+                <i class="fa-solid fa-compass text-brand-gold"></i>
+                <span>Project Overview</span>
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-sans">
+                Developed practical telemetry-analysis skills using MoTeC i2 and Garage61, with an emphasis on reference-lap comparisons, sector-by-sector analysis and interpretation of driver inputs. The objective is to move beyond simply viewing telemetry traces and develop a structured method for identifying performance differences, investigating potential handling issues and forming testable engineering hypotheses.
+              </p>
+            </div>
+            <div class="space-y-3">
+              <h3 class="text-xs font-bold text-white uppercase tracking-wider font-mono flex items-center space-x-2">
+                <i class="fa-solid fa-chart-simple text-brand-blue"></i>
+                <span>Engineering Methodology</span>
+              </h3>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-sans">
+                <div class="bg-[#0a0d14] border border-brand-border p-4 rounded-xl space-y-2">
+                  <div class="font-bold text-white font-mono text-xs text-brand-gold border-b border-brand-border pb-1">
+                    Lap Comparison
+                  </div>
+                  <ul class="text-slate-300 space-y-1.5 list-disc list-inside">
+                    <li>Selected reference laps and compared logged channels to identify differences in driving performance.</li>
+                    <li>Used lap overlays and variance comparisons in MoTeC to investigate where differences developed around a lap.</li>
+                    <li>Examined available speed, throttle, braking and other relevant channels in the context of individual corners.</li>
+                  </ul>
+                </div>
+                <div class="bg-[#0a0d14] border border-brand-border p-4 rounded-xl space-y-2">
+                  <div class="font-bold text-white font-mono text-xs text-brand-blue border-b border-brand-border pb-1">
+                    Corner-by-Corner Analysis
+                  </div>
+                  <ul class="text-slate-300 space-y-1.5 list-disc list-inside">
+                    <li>Documented sector and corner observations using Garage61.</li>
+                    <li>Investigated braking points, brake release, throttle application, minimum corner speed and corner-exit acceleration.</li>
+                    <li>Compared racing lines and driver inputs to understand potential opportunities for more consistent performance.</li>
+                  </ul>
+                </div>
+                <div class="bg-[#0a0d14] border border-brand-border p-4 rounded-xl space-y-2">
+                  <div class="font-bold text-white font-mono text-xs text-emerald-400 border-b border-brand-border pb-1">
+                    Vehicle Behaviour Investigation
+                  </div>
+                  <ul class="text-slate-300 space-y-1.5 list-disc list-inside">
+                    <li>Studied how telemetry patterns can help investigate possible understeer, oversteer, traction limitations and braking inconsistencies.</li>
+                    <li>Considered how entry, mid-corner and exit behaviour can be distinguished through the relationship between driver inputs, speed and vehicle response.</li>
+                  </ul>
+                </div>
+                <div class="bg-[#0a0d14] border border-brand-border p-4 rounded-xl space-y-2">
+                  <div class="font-bold text-white font-mono text-xs text-rose-400 border-b border-brand-border pb-1">
+                    Engineering Interpretation
+                  </div>
+                  <ul class="text-slate-300 space-y-1.5 list-disc list-inside">
+                    <li>Used telemetry observations to formulate questions about driving technique and vehicle setup.</li>
+                    <li>Distinguished driver-input differences from possible vehicle limitations.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs font-sans">
+              <div class="bg-[#0a0d14] border border-brand-border p-4 sm:p-5 rounded-xl space-y-2">
+                <h4 class="font-bold font-mono uppercase text-xs text-emerald-400">Engineering Application</h4>
+                <p class="text-slate-300 leading-relaxed">
+                  Develops the analytical workflow used in race engineering: define a performance question, compare relevant data, identify a repeatable pattern, form a hypothesis and recommend a targeted investigation or test.
+                </p>
+                <div class="pt-2 border-t border-brand-border font-mono text-[11px] text-slate-400">
+                  <strong class="text-slate-300">Deliverables:</strong> Reference-lap comparisons, telemetry overlays, sector notes, driver-input observations and performance hypotheses.
+                </div>
+              </div>
+              <div class="bg-[#0a0d14] border border-brand-border p-4 sm:p-5 rounded-xl space-y-2">
+                <h4 class="font-bold font-mono uppercase text-xs text-brand-gold">Further Development</h4>
+                <p class="text-slate-300 leading-relaxed">
+                  Quantify time differences by sector, build a structured corner-analysis library, correlate telemetry with driver feedback and validate setup hypotheses using repeatable comparisons.
+                </p>
+              </div>
+            </div>
+          </div>
+        `
+      }
+    ];
+
+    let currentModalIndex = 0;
+
+    function openCaseStudyModal(caseStudyId) {
+      const idx = caseStudiesData.findIndex(cs => cs.id === caseStudyId);
+      if (idx !== -1) {
+        currentModalIndex = idx;
+        renderModalContent(idx);
+        document.getElementById('case-study-modal').classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function renderModalContent(idx) {
+      const cs = caseStudiesData[idx];
+      document.getElementById('modal-content').innerHTML = cs.html;
+      document.getElementById('modal-nav-indicator').textContent = `${idx + 1} / ${caseStudiesData.length}`;
+    }
+
+    function closeCaseStudyModal() {
+      document.getElementById('case-study-modal').classList.add('hidden');
+      document.body.style.overflow = '';
+      if (window.location.hash) {
+        history.replaceState(null, null, ' ');
+      }
+    }
+
+    function handleModalBackdropClick(e) {
+      if (e.target.id === 'case-study-modal') {
+        closeCaseStudyModal();
+      }
+    }
+
+    function navigateModal(direction) {
+      let nextIdx = currentModalIndex + direction;
+      if (nextIdx < 0) nextIdx = caseStudiesData.length - 1;
+      if (nextIdx >= caseStudiesData.length) nextIdx = 0;
+      currentModalIndex = nextIdx;
+      renderModalContent(nextIdx);
+      const modalBox = document.querySelector('#case-study-modal > div');
+      if (modalBox) modalBox.scrollTop = 0;
+    }
+
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobile-menu');
+      const icon = document.getElementById('menu-icon');
+      const isHidden = menu.classList.toggle('hidden');
+      if (icon) {
+        icon.className = isHidden ? 'fa-solid fa-bars text-sm' : 'fa-solid fa-xmark text-sm';
+      }
+    }
+
+    function requestCVViaEmail() {
+      const subject = encodeURIComponent("CV Request - Krishang Srivastava");
+      const body = encodeURIComponent("Hello Krishang,\n\nI would like to request a copy of your CV/Resume.\n\nOrganization: \nRole/Opportunity: \n\nBest regards,");
+      showToast("Opening email client to request CV...");
+      setTimeout(() => {
+        window.location.href = `mailto:krishangsrivastava1805@gmail.com?subject=${subject}&body=${body}`;
+      }, 300);
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toast-message');
+      toastMsg.textContent = message;
+      toast.classList.remove('-translate-y-24', 'opacity-0', 'pointer-events-none');
+      toast.classList.add('translate-y-0', 'opacity-100');
+      clearTimeout(window.__toastTimer);
+      window.__toastTimer = setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('-translate-y-24', 'opacity-0', 'pointer-events-none');
+      }, 3000);
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const hash = window.location.hash.replace('#', '');
+      if (hash && hash.startsWith('cs-')) {
+        openCaseStudyModal(hash);
+      }
+    });
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeCaseStudyModal();
+      if (!document.getElementById('case-study-modal').classList.contains('hidden')) {
+        if (e.key === 'ArrowLeft') navigateModal(-1);
+        if (e.key === 'ArrowRight') navigateModal(1);
+      }
+    });
+  </script>
+</body>
+</html>
